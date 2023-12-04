@@ -18,10 +18,15 @@ use Nos\Zed\TwigCodeSniffer\Business\Fixer\FixerFactory;
 use Nos\Zed\TwigCodeSniffer\Business\Fixer\FixerFactoryInterface;
 use Nos\Zed\TwigCodeSniffer\Business\Linter\LinterFactory;
 use Nos\Zed\TwigCodeSniffer\Business\Linter\LinterFactoryInterface;
+use Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilder;
+use Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilderInterface;
+use Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetFactory;
+use Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetFactoryInterface;
 use Nos\Zed\TwigCodeSniffer\Business\Runner\Runner;
 use Nos\Zed\TwigCodeSniffer\Business\Runner\RunnerInterface;
 use Nos\Zed\TwigCodeSniffer\Business\Tokenizer\TokenizerFactory;
 use Nos\Zed\TwigCodeSniffer\Business\Tokenizer\TokenizerFactoryInterface;
+use Nos\Zed\TwigCodeSniffer\TwigCodeSnifferDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use TwigCsFixer\Report\ReporterFactory;
 
@@ -53,6 +58,7 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
         return new ConfigBuilder(
             $this->createConfigFactory(),
             $this->createFinderBuilder(),
+            $this->createRulesetBuilder(),
         );
     }
 
@@ -82,6 +88,25 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
     protected function createFinderFactory(): FinderFactoryInterface
     {
         return new FinderFactory();
+    }
+
+    /**
+     * @return \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilderInterface
+     */
+    protected function createRulesetBuilder(): RulesetBuilderInterface
+    {
+        return new RulesetBuilder(
+            $this->createRulesetFactory(),
+            $this->getRuleProviderPlugins(),
+        );
+    }
+
+    /**
+     * @return \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetFactoryInterface
+     */
+    protected function createRulesetFactory(): RulesetFactoryInterface
+    {
+        return new RulesetFactory();
     }
 
     /**
@@ -122,5 +147,13 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
     protected function createReporterFactory(): ReporterFactory
     {
         return new ReporterFactory();
+    }
+
+    /**
+     * @return array<\Nos\Zed\TwigCodeSniffer\Business\RuleProviderPluginInterface>
+     */
+    protected function getRuleProviderPlugins(): array
+    {
+        return $this->getProvidedDependency(TwigCodeSnifferDependencyProvider::RULE_PROVIDER_PLUGINS);
     }
 }
