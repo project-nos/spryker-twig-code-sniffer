@@ -2,11 +2,15 @@ namespace: NosTest\Zed\TwigCodeSniffer
 
 paths:
     tests: .
-    data: _data
+    data: ../../../_data
     support: _support
-    output: _output
+    output: ../../../_output
 
 suites:
+    Business:
+        path: Business
+        actor: TwigCodeSnifferBusinessTester
+
     Communication:
         path: Communication
         actor: TwigCodeSnifferCommunicationTester

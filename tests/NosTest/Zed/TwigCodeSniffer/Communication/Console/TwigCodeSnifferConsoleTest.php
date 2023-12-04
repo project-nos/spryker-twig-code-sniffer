@@ -13,8 +13,10 @@ namespace NosTest\Zed\TwigCodeSniffer\Communication\Console;
 use Codeception\Test\Unit;
 use Nos\Zed\TwigCodeSniffer\Communication\Console\TwigCodeSnifferConsole;
 use NosTest\Zed\TwigCodeSniffer\TwigCodeSnifferCommunicationTester;
+use SplFileInfo;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use TwigCsFixer\Report\Report;
+use TwigCsFixer\Report\Violation;
 
 /**
  * Auto-generated group annotations
@@ -37,25 +39,45 @@ class TwigCodeSnifferConsoleTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteSuccessful(): void
+    public function testExecuteShouldSucceedWhenCodeStyleIsValid(): void
     {
         // Arrange
         $report = new Report([]);
-        $facade = $this->tester->mockFacadeMethod('run', $report);
+
+        $facadeMock = $this->tester->mockFacadeMethod('run', $report);
 
         $command = new TwigCodeSnifferConsole();
-        $command->setFacade($facade);
+        $command->setFacade($facadeMock);
 
         $commandTester = $this->tester->getConsoleTester($command);
 
-        $arguments = [
-            'command' => $command->getName(),
-        ];
-
         // Act
-        $commandTester->execute($arguments);
+        $commandTester->execute(['command' => $command->getName()]);
 
         // Assert
         $this->assertSame(Console::CODE_SUCCESS, $commandTester->getStatusCode());
+    }
+
+    /**
+     * @return void
+     */
+    public function testExecuteShouldFailWhenCodeStyleIsInvalid(): void
+    {
+        // Arrange
+        $report = new Report([new SplFileInfo('path')]);
+        $report = $report->addViolation(new Violation(Violation::LEVEL_ERROR, 'message', 'path'));
+
+        $facadeMock = $this->tester->mockFacadeMethod('run', $report);
+
+        $command = new TwigCodeSnifferConsole();
+        $command->setFacade($facadeMock);
+
+        $commandTester = $this->tester->getConsoleTester($command);
+
+        // Act
+        $commandTester->execute(['command' => $command->getName()]);
+
+        // Assert
+        $this->assertSame(Console::CODE_ERROR, $commandTester->getStatusCode());
     }
 }

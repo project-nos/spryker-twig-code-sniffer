@@ -17,7 +17,7 @@ class ConfigFactory implements ConfigFactoryInterface
     /**
      * @return \TwigCsFixer\Config\Config
      */
-    public function createConfig(): Config
+    public function create(): Config
     {
         return new Config();
     }

@@ -79,7 +79,7 @@ class ConfigBuilder implements ConfigBuilderInterface
      */
     public function build(array $paths = [], bool $disableCache = false): Config
     {
-        $config = $this->configFactory->createConfig();
+        $config = $this->configFactory->create();
         $config->setFinder($this->finderBuilder->build($paths));
         $ruleset = $this->rulesetBuilder->build();
 

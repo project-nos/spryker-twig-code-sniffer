@@ -1,7 +1,6 @@
 namespace: NosTest
 
 include:
-    #- tests/NosTest/Shared/TwigCodeSniffer
     - tests/NosTest/Zed/TwigCodeSniffer
 
 paths:
