@@ -26,7 +26,7 @@ class PunctuationSpacingRule extends AbstractSpacingRule
         ':' => 0,
         '.' => 0,
         ',' => 0,
-        '|' => 1,
+        '|' => 0,
     ];
 
     /**
@@ -37,7 +37,7 @@ class PunctuationSpacingRule extends AbstractSpacingRule
         '[' => 0,
         '{' => 1,
         '.' => 0,
-        '|' => 1,
+        '|' => 0,
         ':' => 1,
         ',' => 1,
     ];

@@ -31,7 +31,7 @@ class TwigCodeSnifferConsole extends Console
     /**
      * @var string
      */
-    protected const COMMAND_DESCRIPTION = 'N/A';
+    protected const COMMAND_DESCRIPTION = 'Sniff and fix twig code style';
 
     /**
      * @var string
