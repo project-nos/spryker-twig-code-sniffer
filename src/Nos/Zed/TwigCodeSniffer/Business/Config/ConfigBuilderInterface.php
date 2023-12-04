@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Nos\Zed\TwigCodeSniffer\Business\Config;
+
+use TwigCsFixer\Config\Config;
+
+interface ConfigBuilderInterface
+{
+    /**
+     * @param array $paths
+     * @param bool $disableCache
+     *
+     * @return \TwigCsFixer\Config\Config
+     */
+    public function build(array $paths = [], bool $disableCache = false): Config;
+}

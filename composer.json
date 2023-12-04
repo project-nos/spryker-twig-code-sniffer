@@ -1,0 +1,28 @@
+{
+  "name": "project-nos/spryker-twig-code-sniffer",
+  "description": "N/A",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Nos\\": "src/Nos/"
+    }
+  },
+  "require": {
+    "vincentlanglet/twig-cs-fixer": "2.0.0-rc-1"
+  },
+  "require-dev": {
+    "spryker/code-sniffer": "^0.17.19"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/Nos",
+    "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/Nos"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
