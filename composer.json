@@ -7,22 +7,32 @@
       "Nos\\": "src/Nos/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "NosTest\\": "tests/NosTest/"
+    }
+  },
   "require": {
     "spryker/kernel": "^3.74",
     "vincentlanglet/twig-cs-fixer": "^2.0"
   },
   "require-dev": {
+    "codeception/codeception": "^5.0.8",
     "phpstan/extension-installer": "^1.3",
     "phpstan/phpstan": "^1.9.16",
     "spryker-sdk/phpstan-spryker": "^0.4.0",
-    "spryker/code-sniffer": "^0.17.19"
+    "spryker/code-sniffer": "^0.17.19",
+    "spryker/console": "^4.12",
+    "spryker/testify": "^3.50"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse",
-    "phpcs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/Nos",
-    "phpcs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/Nos"
+    "phpcs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
+    "phpcs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
+    "codecept:build": "vendor/bin/codecept build",
+    "codecept:run": "vendor/bin/codecept run"
   },
   "config": {
     "sort-packages": true,

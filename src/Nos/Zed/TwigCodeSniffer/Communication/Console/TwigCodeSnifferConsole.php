@@ -112,6 +112,6 @@ class TwigCodeSnifferConsole extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return $this->getFacade()->run($input, $output)->getTotalErrors() === 0 ? static::SUCCESS : static::FAILURE;
+        return $this->getFacade()->run($input, $output)->getTotalErrors() === 0 ? static::CODE_SUCCESS : static::CODE_ERROR;
     }
 }

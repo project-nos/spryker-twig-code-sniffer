@@ -1,0 +1,18 @@
+namespace: NosTest
+
+include:
+    #- tests/NosTest/Shared/TwigCodeSniffer
+    - tests/NosTest/Zed/TwigCodeSniffer
+
+paths:
+    tests: tests
+    support: .
+    output: tests/_output
+    data: tests/_data
+    envs: tests/_envs
+
+settings:
+    suite_class: \PHPUnit\Framework\TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true

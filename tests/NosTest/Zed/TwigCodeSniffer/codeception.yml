@@ -1,0 +1,16 @@
+namespace: NosTest\Zed\TwigCodeSniffer
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    output: _output
+
+suites:
+    Communication:
+        path: Communication
+        actor: TwigCodeSnifferCommunicationTester
+        modules:
+            enabled:
+                - \SprykerTest\Zed\Console\Helper\ConsoleHelper
+                - \SprykerTest\Zed\Testify\Helper\BusinessHelper
