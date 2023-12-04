@@ -2,6 +2,19 @@
   "name": "project-nos/spryker-twig-code-sniffer",
   "description": "N/A",
   "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "spryker",
+    "twig",
+    "standards",
+    "static analysis"
+  ],
+  "authors": [
+      {
+          "name": "Andreas Penz",
+          "email": "andreas.penz.1989@gmail.com"
+      }
+  ],
   "autoload": {
     "psr-4": {
       "Nos\\": "src/Nos/"
