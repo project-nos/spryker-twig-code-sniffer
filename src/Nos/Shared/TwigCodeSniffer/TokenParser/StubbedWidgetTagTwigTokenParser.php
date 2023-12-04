@@ -80,11 +80,6 @@ class StubbedWidgetTagTwigTokenParser extends AbstractTokenParser
     /**
      * @var string
      */
-    protected const VARIABLE_WIDGET = '_widget';
-
-    /**
-     * @var string
-     */
     protected const TOKEN_ELSEWIDGET = 'elsewidget';
 
     /**

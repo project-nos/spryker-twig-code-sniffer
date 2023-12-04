@@ -34,7 +34,7 @@ class ConfigBuilder implements ConfigBuilderInterface
      * @param \Nos\Zed\TwigCodeSniffer\Business\Config\ConfigFactoryInterface $configFactory
      * @param \Nos\Zed\TwigCodeSniffer\Business\Finder\FinderBuilderInterface $finderBuilder
      * @param \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilderInterface $rulesetBuilder
-     * @param array<\Nos\Zed\TwigCodeSniffer\Business\Config\TokenParserProviderPluginInterface> $tokenParserProviderPlugins
+     * @param array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\TokenParserProviderPluginInterface> $tokenParserProviderPlugins
      */
     public function __construct(
         ConfigFactoryInterface $configFactory,
@@ -49,7 +49,7 @@ class ConfigBuilder implements ConfigBuilderInterface
     }
 
     /**
-     * @param array $paths
+     * @param array<string> $paths
      * @param bool $disableCache
      *
      * @return \TwigCsFixer\Config\Config
@@ -62,10 +62,11 @@ class ConfigBuilder implements ConfigBuilderInterface
         if ($disableCache) {
             $config->setCacheFile(null);
             $config->setCacheManager(null);
-        } // TODO::handle cache
+        }
+
+        // TODO::handle cache
 
         $config->setRuleset($this->rulesetBuilder->build());
-
         foreach ($this->tokenParserProviderPlugins as $tokenParserProviderPlugin) {
             $config->addTokenParser($tokenParserProviderPlugin->provide());
         }

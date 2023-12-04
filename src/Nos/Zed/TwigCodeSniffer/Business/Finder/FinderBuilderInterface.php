@@ -9,7 +9,7 @@ use TwigCsFixer\File\Finder;
 interface FinderBuilderInterface
 {
     /**
-     * @param array $paths
+     * @param array<string> $paths
      *
      * @return \TwigCsFixer\File\Finder
      */

@@ -9,7 +9,7 @@ use TwigCsFixer\Config\Config;
 interface ConfigBuilderInterface
 {
     /**
-     * @param array $paths
+     * @param array<string> $paths
      * @param bool $disableCache
      *
      * @return \TwigCsFixer\Config\Config
