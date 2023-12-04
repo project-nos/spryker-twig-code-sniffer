@@ -65,7 +65,9 @@ Options:
 
 ### Coding Standard
 
-This package attempts to mimic the [official coding standard](https://twig.symfony.com/doc/3.x/coding_standards.html).
+This package attempts to mimic the [official coding standard](https://twig.symfony.com/doc/3.x/coding_standards.html) with the following exceptions:
+
+* One (and only one) space before and after the | (pipe) operator.
 
 
 ## License

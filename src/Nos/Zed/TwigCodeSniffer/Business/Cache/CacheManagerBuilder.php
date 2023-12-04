@@ -21,7 +21,7 @@ class CacheManagerBuilder implements CacheManagerBuilderInterface
     /**
      * @var string
      */
-    protected const PACKAGE_NAME = 'vincentlanglet/twig-cs-fixer';
+    protected const PACKAGE_NAME = 'project-nos/spryker-twig-code-sniffer';
 
     /**
      * @var \Nos\Zed\TwigCodeSniffer\Business\Cache\FileCacheManagerFactoryInterface
