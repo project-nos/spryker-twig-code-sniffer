@@ -17,6 +17,7 @@ use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\EmptyLinesRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\IndentRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorNameSpacingRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorSpacingRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\PunctuationSpacingRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingCommaSingleLineRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingSpaceRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\TokenParserProvider\StubbedShopCmsSlotTokenParserProviderPlugin;
@@ -77,6 +78,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
             new IndentRuleProviderPlugin(),
             new OperatorNameSpacingRuleProviderPlugin(),
             new OperatorSpacingRuleProviderPlugin(),
+            new PunctuationSpacingRuleProviderPlugin(),
             new TrailingCommaSingleLineRuleProviderPlugin(),
             new TrailingSpaceRuleProviderPlugin(),
         ];
