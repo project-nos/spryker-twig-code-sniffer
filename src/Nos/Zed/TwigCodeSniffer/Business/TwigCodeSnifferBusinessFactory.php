@@ -73,6 +73,7 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
             $this->createRulesetBuilder(),
             $this->createCacheManagerBuilder(),
             $this->getTokenParserProviderPlugins(),
+            $this->getExtensionProviderPlugins(),
         );
     }
 
@@ -197,7 +198,15 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
      */
     protected function getTokenParserProviderPlugins(): array
     {
-        return $this->getProvidedDependency(TwigCodeSnifferDependencyProvider::TOKEN_PARSER_PLUGINS);
+        return $this->getProvidedDependency(TwigCodeSnifferDependencyProvider::TOKEN_PARSER_PROVIDER_PLUGINS);
+    }
+
+    /**
+     * @return array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\ExtensionProviderPluginInterface>
+     */
+    protected function getExtensionProviderPlugins(): array
+    {
+        return $this->getProvidedDependency(TwigCodeSnifferDependencyProvider::EXTENSION_PROVIDER_PLUGINS);
     }
 
     /**

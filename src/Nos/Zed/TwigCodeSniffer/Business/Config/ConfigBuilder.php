@@ -43,24 +43,32 @@ class ConfigBuilder implements ConfigBuilderInterface
     protected array $tokenParserProviderPlugins;
 
     /**
+     * @var array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\ExtensionProviderPluginInterface>
+     */
+    protected array $extensionProviderPlugins;
+
+    /**
      * @param \Nos\Zed\TwigCodeSniffer\Business\Config\ConfigFactoryInterface $configFactory
      * @param \Nos\Zed\TwigCodeSniffer\Business\Finder\FinderBuilderInterface $finderBuilder
      * @param \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilderInterface $rulesetBuilder
      * @param \Nos\Zed\TwigCodeSniffer\Business\Cache\CacheManagerBuilderInterface $cacheManagerBuilder
      * @param array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\TokenParserProviderPluginInterface> $tokenParserProviderPlugins
+     * @param array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\ExtensionProviderPluginInterface> $extensionProviderPlugins
      */
     public function __construct(
         ConfigFactoryInterface $configFactory,
         FinderBuilderInterface $finderBuilder,
         RulesetBuilderInterface $rulesetBuilder,
         CacheManagerBuilderInterface $cacheManagerBuilder,
-        array $tokenParserProviderPlugins = []
+        array $tokenParserProviderPlugins = [],
+        array $extensionProviderPlugins = []
     ) {
         $this->configFactory = $configFactory;
         $this->finderBuilder = $finderBuilder;
         $this->rulesetBuilder = $rulesetBuilder;
         $this->cacheManagerBuilder = $cacheManagerBuilder;
         $this->tokenParserProviderPlugins = $tokenParserProviderPlugins;
+        $this->extensionProviderPlugins = $extensionProviderPlugins;
     }
 
     /**
@@ -82,6 +90,10 @@ class ConfigBuilder implements ConfigBuilderInterface
         $config->setRuleset($ruleset);
         foreach ($this->tokenParserProviderPlugins as $tokenParserProviderPlugin) {
             $config->addTokenParser($tokenParserProviderPlugin->provide());
+        }
+
+        foreach ($this->extensionProviderPlugins as $extensionProviderPlugin) {
+            $config->addTwigExtension($extensionProviderPlugin->provide());
         }
 
         return $config;

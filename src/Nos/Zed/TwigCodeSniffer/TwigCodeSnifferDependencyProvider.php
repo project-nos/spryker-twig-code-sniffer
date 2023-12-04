@@ -36,7 +36,12 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @var string
      */
-    public const TOKEN_PARSER_PLUGINS = 'TOKEN_PARSER_PROVIDER_PLUGINS';
+    public const TOKEN_PARSER_PROVIDER_PLUGINS = 'TOKEN_PARSER_PROVIDER_PLUGINS';
+
+    /**
+     * @var string
+     */
+    public const EXTENSION_PROVIDER_PLUGINS = 'EXTENSION_PROVIDER_PLUGINS';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -47,6 +52,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = $this->addRuleProviderPlugins($container);
         $container = $this->addTokenParserProviderPlugins($container);
+        $container = $this->addExtensionProviderPlugins($container);
 
         return $container;
     }
@@ -91,7 +97,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addTokenParserProviderPlugins(Container $container): Container
     {
-        $container->set(static::TOKEN_PARSER_PLUGINS, function (): array {
+        $container->set(static::TOKEN_PARSER_PROVIDER_PLUGINS, function (): array {
             return $this->getTokenParserProviderPlugins();
         });
 
@@ -108,5 +114,27 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
             new StubbedShopUiDefineTwigTokenParserProviderPlugin(),
             new StubbedWidgetTagTwigTokenParserProviderPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addExtensionProviderPlugins(Container $container): Container
+    {
+        $container->set(static::EXTENSION_PROVIDER_PLUGINS, function (): array {
+            return $this->getExtensionProviderPlugins();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\ExtensionProviderPluginInterface>
+     */
+    protected function getExtensionProviderPlugins(): array
+    {
+        return [];
     }
 }
