@@ -2,7 +2,6 @@
 
 /**
  * Copyright (c) Andreas Penz
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
@@ -11,6 +10,12 @@ declare(strict_types=1);
 
 namespace Nos\Zed\TwigCodeSniffer\Business;
 
+use Nos\Zed\TwigCodeSniffer\Business\Cache\CacheManagerBuilder;
+use Nos\Zed\TwigCodeSniffer\Business\Cache\CacheManagerBuilderInterface;
+use Nos\Zed\TwigCodeSniffer\Business\Cache\FileCacheManagerFactory;
+use Nos\Zed\TwigCodeSniffer\Business\Cache\FileCacheManagerFactoryInterface;
+use Nos\Zed\TwigCodeSniffer\Business\Cache\Handler\CacheFileHandlerFactory;
+use Nos\Zed\TwigCodeSniffer\Business\Cache\Handler\CacheFileHandlerFactoryInterface;
 use Nos\Zed\TwigCodeSniffer\Business\Config\ConfigBuilder;
 use Nos\Zed\TwigCodeSniffer\Business\Config\ConfigBuilderInterface;
 use Nos\Zed\TwigCodeSniffer\Business\Config\ConfigFactory;
@@ -66,6 +71,7 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
             $this->createConfigFactory(),
             $this->createFinderBuilder(),
             $this->createRulesetBuilder(),
+            $this->createCacheManagerBuilder(),
             $this->getTokenParserProviderPlugins(),
         );
     }
@@ -115,6 +121,35 @@ class TwigCodeSnifferBusinessFactory extends AbstractBusinessFactory
     protected function createRulesetFactory(): RulesetFactoryInterface
     {
         return new RulesetFactory();
+    }
+
+    /**
+     * @return \Nos\Zed\TwigCodeSniffer\Business\Cache\CacheManagerBuilderInterface
+     */
+    protected function createCacheManagerBuilder(): CacheManagerBuilderInterface
+    {
+        return new CacheManagerBuilder(
+            $this->createFileCacheManagerFactory(),
+            $this->createCacheFileHandlerFactory(),
+        );
+    }
+
+    /**
+     * @return \Nos\Zed\TwigCodeSniffer\Business\Cache\FileCacheManagerFactoryInterface
+     */
+    protected function createFileCacheManagerFactory(): FileCacheManagerFactoryInterface
+    {
+        return new FileCacheManagerFactory();
+    }
+
+    /**
+     * @return \Nos\Zed\TwigCodeSniffer\Business\Cache\Handler\CacheFileHandlerFactoryInterface
+     */
+    protected function createCacheFileHandlerFactory(): CacheFileHandlerFactoryInterface
+    {
+        return new CacheFileHandlerFactory(
+            $this->getConfig()->getCacheFilePath(),
+        );
     }
 
     /**
