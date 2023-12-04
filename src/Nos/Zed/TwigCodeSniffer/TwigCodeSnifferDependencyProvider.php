@@ -13,6 +13,7 @@ use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorNameSpacingRuleProvid
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorSpacingRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingCommaSingleLineRuleProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingSpaceRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\TokenParserProvider\StubbedShopCmsSlotTokenParserProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\TokenParserProvider\StubbedShopUiDefineTwigTokenParserProviderPlugin;
 use Nos\Shared\TwigCodeSniffer\Plugin\TokenParserProvider\StubbedWidgetTagTwigTokenParserProviderPlugin;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
@@ -95,6 +96,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     protected function getTokenParserProviderPlugins(): array
     {
         return [
+            new StubbedShopCmsSlotTokenParserProviderPlugin(),
             new StubbedShopUiDefineTwigTokenParserProviderPlugin(),
             new StubbedWidgetTagTwigTokenParserProviderPlugin(),
         ];
