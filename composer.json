@@ -29,8 +29,8 @@
   "prefer-stable": true,
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse",
-    "phpcs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
-    "phpcs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
+    "phpcs:check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
+    "phpcs:fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
     "codecept:build": "vendor/bin/codecept build",
     "codecept:run": "vendor/bin/codecept run"
   },
