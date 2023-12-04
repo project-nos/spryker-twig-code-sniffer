@@ -9,7 +9,7 @@
   },
   "require": {
     "spryker/kernel": "^3.74",
-    "vincentlanglet/twig-cs-fixer": "2.0.0-rc-1"
+    "vincentlanglet/twig-cs-fixer": "^2.0"
   },
   "require-dev": {
     "phpstan/extension-installer": "^1.3",
