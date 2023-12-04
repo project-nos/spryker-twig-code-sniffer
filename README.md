@@ -1,8 +1,8 @@
 ![NOS spryker twig code sniffer](.github/banner.svg)
 
-[![github workflow tests](https://img.shields.io/github/actions/workflow/status/project-nos/spryker-twig-cs/tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/project-nos/spryker-twig-cs/actions/workflows/tests.yml)
 [![mit license](https://img.shields.io/github/license/project-nos/spryker-twig-cs?style=flat-square)](https://github.com/project-nos/spryker-twig-cs/blob/master/LICENSE)
-
+[![github workflow tests](https://img.shields.io/github/actions/workflow/status/project-nos/spryker-twig-cs/tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/project-nos/spryker-twig-cs/actions/workflows/tests.yml)
+[![packagist version](https://img.shields.io/packagist/v/project-nos/spryker-twig-code-sniffer)](https://packagist.org/packages/project-nos/spryker-twig-code-sniffer)
 
 _This package aims to be for twig templates in spryker what [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) is to php. It checks your codebase for violations on coding standards._
 
@@ -65,7 +65,7 @@ Options:
 
 ### Coding Standard
 
-This package attempts to mimic the [official coding standard](https://twig.symfony.com/doc/3.x/coding_standards.html):
+This package attempts to mimic the [official coding standard](https://twig.symfony.com/doc/3.x/coding_standards.html).
 
 
 ## License
