@@ -1,6 +1,6 @@
 {
   "name": "project-nos/spryker-twig-code-sniffer",
-  "description": "N/A",
+  "description": "This package aims to be for twig templates in spryker what phpcs is to php. It checks your codebase for violations on coding standards.",
   "license": "MIT",
   "type": "library",
   "keywords": [
