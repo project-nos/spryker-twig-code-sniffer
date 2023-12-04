@@ -26,18 +26,26 @@ class ConfigBuilder implements ConfigBuilderInterface
     protected RulesetBuilderInterface $rulesetBuilder;
 
     /**
+     * @var array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\TokenParserProviderPluginInterface>
+     */
+    protected array $tokenParserProviderPlugins;
+
+    /**
      * @param \Nos\Zed\TwigCodeSniffer\Business\Config\ConfigFactoryInterface $configFactory
      * @param \Nos\Zed\TwigCodeSniffer\Business\Finder\FinderBuilderInterface $finderBuilder
      * @param \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetBuilderInterface $rulesetBuilder
+     * @param array<\Nos\Zed\TwigCodeSniffer\Business\Config\TokenParserProviderPluginInterface> $tokenParserProviderPlugins
      */
     public function __construct(
         ConfigFactoryInterface $configFactory,
         FinderBuilderInterface $finderBuilder,
-        RulesetBuilderInterface $rulesetBuilder
+        RulesetBuilderInterface $rulesetBuilder,
+        array $tokenParserProviderPlugins = []
     ) {
         $this->configFactory = $configFactory;
         $this->finderBuilder = $finderBuilder;
         $this->rulesetBuilder = $rulesetBuilder;
+        $this->tokenParserProviderPlugins = $tokenParserProviderPlugins;
     }
 
     /**
@@ -57,6 +65,10 @@ class ConfigBuilder implements ConfigBuilderInterface
         } // TODO::handle cache
 
         $config->setRuleset($this->rulesetBuilder->build());
+
+        foreach ($this->tokenParserProviderPlugins as $tokenParserProviderPlugin) {
+            $config->addTokenParser($tokenParserProviderPlugin->provide());
+        }
 
         return $config;
     }

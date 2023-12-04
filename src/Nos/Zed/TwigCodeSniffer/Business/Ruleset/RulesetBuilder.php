@@ -14,13 +14,13 @@ class RulesetBuilder implements RulesetBuilderInterface
     protected RulesetFactoryInterface $rulesetFactory;
 
     /**
-     * @var array<\Nos\Zed\TwigCodeSniffer\Dependency\Plugin\RuleProviderPluginInterface>
+     * @var array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\RuleProviderPluginInterface>
      */
     protected array $ruleProviderPlugins;
 
     /**
      * @param \Nos\Zed\TwigCodeSniffer\Business\Ruleset\RulesetFactoryInterface $rulesetFactory
-     * @param array<\Nos\Zed\TwigCodeSniffer\Business\Ruleset\RuleProviderPluginInterface> $ruleProviderPlugins
+     * @param array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\RuleProviderPluginInterface> $ruleProviderPlugins
      */
     public function __construct(
         RulesetFactoryInterface $rulesetFactory,

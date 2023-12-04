@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nos\Zed\TwigCodeSniffer\Dependency\Plugin;
+namespace Nos\Shared\TwigCodeSniffer\Dependency\Plugin;
 
 use TwigCsFixer\Rules\RuleInterface;
 

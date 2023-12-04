@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Nos\Zed\TwigCodeSniffer;
 
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\BlankEOFRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\BlockNameSpacingRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\DelimiterSpacingRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\EmptyLinesRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\IndentRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\OperatorNameSpacingRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\OperatorSpacingRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\TrailingCommaSingleLineRuleProviderPlugin;
-use Nos\Zed\TwigCodeSniffer\Communication\Plugin\TrailingSpaceRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\BlankEOFRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\BlockNameSpacingRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\DelimiterSpacingRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\EmptyLinesRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\IndentRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorNameSpacingRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\OperatorSpacingRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingCommaSingleLineRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\RuleProvider\TrailingSpaceRuleProviderPlugin;
+use Nos\Shared\TwigCodeSniffer\Plugin\TokenParserProvider\StubbedShopUiDefineTwigTokenParserProviderPlugin;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -24,6 +25,11 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     public const RULE_PROVIDER_PLUGINS = 'RULE_PROVIDER_PLUGINS';
 
     /**
+     * @var string
+     */
+    public const TOKEN_PARSER_PLUGINS = 'TOKEN_PARSER_PROVIDER_PLUGINS';
+
+    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
@@ -31,6 +37,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addRuleProviderPlugins($container);
+        $container = $this->addTokenParserProviderPlugins($container);
 
         return $container;
     }
@@ -42,7 +49,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addRuleProviderPlugins(Container $container): Container
     {
-        $container->set(static::RULE_PROVIDER_PLUGINS, function () {
+        $container->set(static::RULE_PROVIDER_PLUGINS, function (): array {
             return $this->getRuleProviderPlugins();
         });
 
@@ -50,7 +57,7 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @return array<\Nos\Zed\TwigCodeSniffer\Dependency\Plugin\RuleProviderPluginInterface>
+     * @return array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\RuleProviderPluginInterface>
      */
     protected function getRuleProviderPlugins(): array
     {
@@ -64,6 +71,30 @@ class TwigCodeSnifferDependencyProvider extends AbstractBundleDependencyProvider
             new OperatorSpacingRuleProviderPlugin(),
             new TrailingCommaSingleLineRuleProviderPlugin(),
             new TrailingSpaceRuleProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addTokenParserProviderPlugins(Container $container): Container
+    {
+        $container->set(static::TOKEN_PARSER_PLUGINS, function (): array {
+            return $this->getTokenParserProviderPlugins();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return array<\Nos\Shared\TwigCodeSniffer\Dependency\Plugin\TokenParserProviderPluginInterface>
+     */
+    protected function getTokenParserProviderPlugins(): array
+    {
+        return [
+            new StubbedShopUiDefineTwigTokenParserProviderPlugin(),
         ];
     }
 }
