@@ -25,6 +25,7 @@ use Codeception\Actor;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method void pause($vars = [])
+ * @method \Nos\Zed\TwigCodeSniffer\Business\TwigCodeSnifferFacadeInterface getFacade()
  *
  * @SuppressWarnings(\NosTest\Zed\TwigCodeSniffer\PHPMD)
  */

@@ -10,6 +10,9 @@ suites:
     Business:
         path: Business
         actor: TwigCodeSnifferBusinessTester
+        modules:
+            enabled:
+                - \SprykerTest\Zed\Testify\Helper\BusinessHelper
 
     Communication:
         path: Communication
