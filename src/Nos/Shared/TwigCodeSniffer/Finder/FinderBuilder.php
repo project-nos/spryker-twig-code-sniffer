@@ -22,26 +22,18 @@ class FinderBuilder implements FinderBuilderInterface
     /**
      * @var array<string>
      */
-    protected array $includePaths;
-
-    /**
-     * @var array<string>
-     */
-    protected array $excludePaths;
+    protected array $paths;
 
     /**
      * @param \Nos\Shared\TwigCodeSniffer\Finder\FinderFactoryInterface $finderFactory
-     * @param array<string> $includePaths
-     * @param array<string> $excludePaths
+     * @param array<string> $paths
      */
     public function __construct(
         FinderFactoryInterface $finderFactory,
-        array $includePaths = [],
-        array $excludePaths = []
+        array $paths = []
     ) {
         $this->finderFactory = $finderFactory;
-        $this->includePaths = $includePaths;
-        $this->excludePaths = $excludePaths;
+        $this->paths = $paths;
     }
 
     /**
@@ -57,6 +49,6 @@ class FinderBuilder implements FinderBuilderInterface
             return $finder->files()->in($paths);
         }
 
-        return $finder->files()->in($this->includePaths)->exclude($this->excludePaths);
+        return $finder->files()->in($this->paths);
     }
 }

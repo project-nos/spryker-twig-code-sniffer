@@ -91,8 +91,7 @@ class TwigCodeSnifferFactory extends AbstractFactory
     {
         return new FinderBuilder(
             $this->createFinderFactory(),
-            $this->getConfig()->getIncludePaths(),
-            $this->getConfig()->getExcludePaths(),
+            $this->getConfig()->getPaths(),
         );
     }
 

@@ -2,6 +2,7 @@ parameters:
     level: 8
     paths:
         - src/
+        - tests/
 
     excludePaths:
         - '%rootDir%/../../../src/Nos/Yves/TwigCodeSniffer/TokenParser/*'

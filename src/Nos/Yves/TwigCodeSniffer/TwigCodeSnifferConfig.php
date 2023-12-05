@@ -25,18 +25,10 @@ class TwigCodeSnifferConfig extends AbstractBundleConfig
     /**
      * @return array<string>
      */
-    public function getIncludePaths(): array
+    public function getPaths(): array
     {
         return [
             APPLICATION_ROOT_DIR . '/src/Pyz/Yves/*/Theme/*/**',
         ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getExcludePaths(): array
-    {
-        return [];
     }
 }
