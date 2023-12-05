@@ -29,7 +29,6 @@ jobs:
             -   name: Install dependencies and build codebase
                 run: |
                     composer install --prefer-dist --no-progress
-                    composer run codecept:build
 
             -   name: Run phpstan
                 run: composer run phpstan
