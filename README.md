@@ -24,10 +24,10 @@ $config[KernelConstants::CORE_NAMESPACES] = [
 ];
 ```
 
-In `src/Pyz/Zed/Console/ConsoleDependencyProvider.php` you need to register the console command plugin for deploy tasks.
+In `src/Pyz/Yves/Console/ConsoleDependencyProvider.php` you need to register the console command plugin for deploy tasks.
 
 ```php
-use Nos\Zed\TwigCodeSniffer\Communication\Console\TwigCodeSnifferConsole;
+use Nos\Yves\TwigCodeSniffer\Plugin\Console\TwigCodeSnifferConsole;
 
     protected function getConsoleCommands(Container $container): array
     {

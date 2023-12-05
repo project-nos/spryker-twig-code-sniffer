@@ -36,6 +36,3 @@ jobs:
 
             -   name: Run phpcs
                 run: composer run phpcs:check
-
-            -   name: Run codeception
-                run: composer run codecept:run

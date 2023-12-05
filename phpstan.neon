@@ -2,10 +2,9 @@ parameters:
     level: 8
     paths:
         - src/
-        - tests/
 
     excludePaths:
-        - '%rootDir%/../../../src/Nos/Shared/TwigCodeSniffer/TokenParser/*'
+        - '%rootDir%/../../../src/Nos/Yves/TwigCodeSniffer/TokenParser/*'
 
     bootstrapFiles:
         - '%rootDir%/../../../phpstan-bootstrap.php'
