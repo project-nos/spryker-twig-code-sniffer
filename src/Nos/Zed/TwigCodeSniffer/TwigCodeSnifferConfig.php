@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Nos\Yves\TwigCodeSniffer;
+namespace Nos\Zed\TwigCodeSniffer;
 
-use Spryker\Yves\Kernel\AbstractBundleConfig;
+use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
  * @method \Nos\Shared\TwigCodeSniffer\TwigCodeSnifferConfig getSharedConfig()
@@ -22,7 +22,7 @@ class TwigCodeSnifferConfig extends AbstractBundleConfig
      */
     public function getCacheFilePath(): string
     {
-        return APPLICATION_ROOT_DIR . '/data/tmp/.twig-cs-yves.cache';
+        return APPLICATION_ROOT_DIR . '/data/tmp/.twig-cs-zed.cache';
     }
 
     /**
@@ -32,7 +32,7 @@ class TwigCodeSnifferConfig extends AbstractBundleConfig
     {
         $paths = [];
         foreach ($this->getSharedConfig()->getProjectNamespaces() as $projectNamespace) {
-            $paths[] = APPLICATION_SOURCE_DIR . '/' . $projectNamespace . '/Yves/*/Theme/*/**';
+            $paths[] = APPLICATION_SOURCE_DIR . '/' . $projectNamespace . '/Zed/*/Presentation/**';
         }
 
         return $paths;
