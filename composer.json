@@ -18,7 +18,7 @@
   "require": {
     "php": ">=8.1",
     "spryker/kernel": "^3.52.0",
-    "vincentlanglet/twig-cs-fixer": "^2.0"
+    "vincentlanglet/twig-cs-fixer": "2.0.*"
   },
   "require-dev": {
     "phpstan/phpstan": "^1.10",
